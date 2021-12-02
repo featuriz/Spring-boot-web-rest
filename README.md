@@ -37,15 +37,16 @@ The difference between REST and RPC:
 Working with [Spring HATEOAS](https://spring.io/projects/spring-hateoas)
 
 - This helps to write hypermedia-driven outputs.
-
+	
 	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-hateoas</artifactId>
+	  <groupId>org.springframework.boot</groupId>
+	  <artifactId>spring-boot-starter-hateoas</artifactId>
 	</dependency>
 	
+
 - A critical ingredient to any RESTful service is adding [links](https://tools.ietf.org/html/rfc8288) to relevant operations
 
-    {
+	{
       "id": 1,
       "name": "Bilbo Baggins",
       "role": "burglar",
@@ -59,13 +60,16 @@ Working with [Spring HATEOAS](https://spring.io/projects/spring-hateoas)
       }
     }
     
+
 #### Simplifying Link Creation
 - Create EmployeeModelAssembler by implementing _RepresentationModelAssembler interface_
 - Convert Employee objects to EntityModel<Employee> objects
 
 ### Evolving REST APIs
-    Never delete a column in a database. 
-    
+	
+	Never delete a column in a database. 
+	
+
 - Replace the field
 - A "virtual" getter & setter for the old name property
 
@@ -73,8 +77,8 @@ Working with [Spring HATEOAS](https://spring.io/projects/spring-hateoas)
 - Include a Location response header
 - Return the model-based version of the saved object
 
-	$ curl -v -X PUT localhost:8080/employees/3 -H 'Content-Type:application/json' -d '{"name": "Samwise Gamgee", "role": "ring bearer"}'
 	
+	$ curl -v -X PUT localhost:8080/employees/3 -H 'Content-Type:application/json' -d '{"name": "Samwise Gamgee", "role": "ring bearer"}'	
 	* TCP_NODELAY set
 	* Connected to localhost (::1) port 8080 (#0)
 	> PUT /employees/3 HTTP/1.1
@@ -104,6 +108,7 @@ Working with [Spring HATEOAS](https://spring.io/projects/spring-hateoas)
 			}
 		}
 	}
+	
 
 ## Building links into your REST API
 - Enter __HATEOAS__ or __Hypermedia as the Engine of Application State__. 
@@ -113,6 +118,8 @@ Working with [Spring HATEOAS](https://spring.io/projects/spring-hateoas)
 - Clients only need show users the corresponding buttons when the links exist.
 
 #### Try cancelling an order:
+
+	
 	$ curl -v -X DELETE http://localhost:8080/orders/4/cancel
 	> DELETE /orders/4/cancel HTTP/1.1
 	> Host: localhost:8080
@@ -138,12 +145,13 @@ Working with [Spring HATEOAS](https://spring.io/projects/spring-hateoas)
 	  }
 	}
 	
+
 __HTTP 200__ status code indicating it was successful
 
 If you try the same operation again…
 
-
-    $ curl -v -X DELETE http://localhost:8080/orders/4/cancel
+	
+	$ curl -v -X DELETE http://localhost:8080/orders/4/cancel
 	
 	* TCP_NODELAY set
 	* Connected to localhost (::1) port 8080 (#0)
@@ -161,5 +169,6 @@ If you try the same operation again…
 	  "title": "Method not allowed",
 	  "detail": "You can't cancel an order that is in the CANCELLED status"
 	}
+	
 	
 __HTTP 405 Method Not Allowed__
