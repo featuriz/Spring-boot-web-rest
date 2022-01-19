@@ -1,12 +1,12 @@
 # Spring-boot-web-rest
-Spring Boot Web based REST 
+This is a Spring Boot application for  _Web based REST_ 
 
 __Featuriz__ guide to *Spring Framework 5*.
 
 ## Technology and Version
 
 | __Spring__ | __Version__ |
-| --- | --- |
+| ---- | ---- |
 | Spring Boot | 2.6.1 |
 | Spring web | 5.3.13 |
 | Spring Test | 5.3.13 |
